@@ -1,12 +1,38 @@
-﻿<Window x:Class="TareaEnlaceJesusProyecto.MainWindow"
+﻿<Window x:Class="BindingExample.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TareaEnlaceJesusProyecto"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Formulario" Height="250" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
         
+        <TextBlock Text="Nombre:" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="5"/>
+        <TextBox Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Margin="5"/>
+
+       
+        <TextBlock Text="Teléfono:" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="5"/>
+        <TextBox Text="{Binding Telefono, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="5"/>
+
+        
+        <TextBlock Text="Nombre ingresado:" Grid.Row="2" Grid.Column="0" Margin="5"/>
+        <TextBlock Text="{Binding Nombre}" Grid.Row="2" Grid.Column="1" Margin="5"/>
+
+        <TextBlock Text="Teléfono ingresado:" Grid.Row="3" Grid.Column="0" Margin="5"/>
+        <TextBlock Text="{Binding Telefono}" Grid.Row="3" Grid.Column="1" Margin="5"/>
+
+        
+        <Button Content="Guardar" Grid.Row="4" Grid.Column="1" Margin="5"
+                Command="{Binding GuardarCommand}"
+                IsEnabled="{Binding PuedeGuardar}"/>
     </Grid>
 </Window>
